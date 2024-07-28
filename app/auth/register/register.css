@@ -1,0 +1,16 @@
+body{
+    position: relative;
+    display: flex;
+    place-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.signInForm{
+    background-color: white;
+    padding: 40px;
+}
+
+.signInForm *{
+    margin-bottom: 5px;
+}
