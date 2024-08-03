@@ -1,4 +1,3 @@
-import axios from "axios";
 import _ from "lodash";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
@@ -35,8 +34,8 @@ export const next_Auth_options = {
                     console.log(err);
                     const data = await fe.text()
                     console.log(data);
-                    cookies().set("token", data)
-                    return data
+                    cookies().set("token", data, { expires: new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)) })
+                    return credentials
                 }
             }
         )

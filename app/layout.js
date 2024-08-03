@@ -12,9 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <SessionProviderClient>
-        <body style={{ backgroundColor: "rgb(138 ,138 ,138)" }}>{children}</body>
-      </SessionProviderClient>
+      <body>
+        <SessionProviderClient>
+          {children}
+        </SessionProviderClient>
+      </body>
     </html>
   );
 }

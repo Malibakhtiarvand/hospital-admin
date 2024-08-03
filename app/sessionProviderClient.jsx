@@ -1,5 +1,6 @@
 "use client"
 
+import "bootstrap/dist/js/bootstrap"
 import { SessionProvider } from "next-auth/react"
 
 

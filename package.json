@@ -12,13 +12,18 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "formik": "^2.4.6",
+    "immer": "^10.1.1",
+    "jalali-moment": "^3.3.11",
     "lodash": "^4.17.21",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "property-expr": "^2.0.6",
     "react": "^18",
     "react-dom": "^18",
-    "sweet-alert": "^2.0.5",
+    "sweetalert": "^2.1.2",
     "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10"
   }
 }

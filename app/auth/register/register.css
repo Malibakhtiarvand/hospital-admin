@@ -4,6 +4,7 @@ body{
     place-items: center;
     height: 100vh;
     justify-content: center;
+    background-color: rgb(138 ,138 ,138);
 }
 
 .signInForm{

@@ -7,9 +7,10 @@ import { useFormik } from "formik"
 import axios from "axios"
 import _ from "lodash"
 import "./register.css"
-import {useSession} from "next-auth/react"
+import { useSession } from "next-auth/react"
 import { getCookie } from "@/app/utilities/cookie"
-import sweetAlert from "sweet-alert"
+import { AddAdminHttpRequest, GetSkillsHttpRequest } from "@/app/utilities/httpService"
+
 
 export default function Register() {
     const Session = useSession()
@@ -44,10 +45,11 @@ export default function Register() {
                 Skill: 0,
             },
             onSubmit: async (values) => {
-                const cookie = getCookie("token")
                 console.log(cookie);
-                const { status } = await axios.post("https://localhost:7087/Auth/admin/Add", values,{headers: {"Authorization": "Bearer " + cookie}})
-                alert("success")
+                const { status } = await AddAdminHttpRequest(values)
+                if (status == 200) {
+                    swal("success")
+                }
             }
         }
     )
@@ -55,7 +57,7 @@ export default function Register() {
     useEffect(
         () => {
             const getSkills = async () => {
-                const { data } = await axios.get("https://localhost:7087/Auth/allInfo")
+                const { data } = await GetSkillsHttpRequest()
                 setSkills(data)
             }
             getSkills()
