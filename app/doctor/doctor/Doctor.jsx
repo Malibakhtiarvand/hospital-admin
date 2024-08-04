@@ -29,13 +29,8 @@ export default function DoctorClient() {
         const sendTime = await AddTimeHttpRequest({ time })
         if (sendTime.status == 200) {
             setAddTimebool(false)
-            setTimes(
-                produce(
-                    draft => {
-                        return draft.push({ visitTime: newTime })
-                    }
-                )
-            )
+            var newTimesArr = [...times, time]
+            setTimes(newTimesArr)
         }
     }
     return (
@@ -55,7 +50,7 @@ export default function DoctorClient() {
                                         <input onChange={(ev) => setNewTime(ev.target.value)} className="border" />
                                         <button onClick={AddTimeF} className="btn btn-secondary">send</button>
                                     </>
-                                ) : <button onClick={() => setAddTimebool(true)} className="btn btn-secondary">add Patient</button>
+                                ) : <button onClick={() => setAddTimebool(true)} className="btn btn-secondary">add Time</button>
                             }
                             {
                                 <MapTime times={times} />
