@@ -1,15 +1,16 @@
-import { AddPatientHttpRequest, GetDepartmentsHttpRequest, GetDoctorsHttpRequest, GetTimesHttpRequest } from "@/app/utilities/httpService"
+import { AddPatientHttpRequest, GetDepartmentsHttpRequest, GetDoctorsHttpRequest, GetPatientsHttpRequest, GetTimesHttpRequest } from "@/app/utilities/httpService"
 import { validateEmailError, validateFitLengthError, validateMaxLengthError, validateMinLengthError, validateRequiredError } from "@/app/utilities/validateErrors"
 import { useFormik } from "formik"
 import moment from "jalali-moment"
-import { useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import * as Yup from "yup"
-import {decodeToken, useJwt} from "react-jwt"
+import { PatientContext } from "../patientContext"
 
 export default function Appointment() {
     const [departments, setDepartments] = useState([])
     const [doctors, setDoctors] = useState([])
     const [times, setTimes] = useState([])
+    const {setPatients,setShowAddPatientForm} = useContext(PatientContext)
 
     useEffect(
         () => {
@@ -74,7 +75,9 @@ export default function Appointment() {
                 const sendPatientToServer = await AddPatientHttpRequest(val)
                 if(sendPatientToServer.status == 200){
                     console.log("success");
-                    console.log(decodeToken(sendPatientToServer.data));
+                    const {data} = await GetPatientsHttpRequest()
+                    setPatients(data)
+                    setShowAddPatientForm(false)
                 }
             }
         }

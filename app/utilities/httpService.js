@@ -10,5 +10,7 @@ export const AddAdminHttpRequest = (data) => axios.post(baseUrl + "Auth/admin/Ad
 export const GetSkillsHttpRequest = () => axios.get(baseUrl + "Auth/allInfo")
 export const GetPatientsHttpRequest = () => axios.get(baseUrl + "Auth/Admin/patients")
 export const AddPatientHttpRequest = (data) => axios.post(baseUrl + "Auth", data)
-export const GetTimesHttpRequest = () => axios.get(baseUrl + "Auth/times/81a7358d-c092-4353-8bbf-33d72723a565")
+export const GetTimesHttpRequest = (id) => axios.get(baseUrl + "Auth/times/" + id || "")
 export const AddTimeHttpRequest = (time) => axios.post(baseUrl + "Auth/Admin/addTime", time)
+export const DeleteVisitHttpRequest = (visitTimeId) => axios.delete(baseUrl + `Auth/deleteTime/${visitTimeId}`)
+export const CancelVisitHttpRequest = (patientId, visitTimeId) => axios.get(baseUrl + `Auth/CancelVisit/${patientId}/${visitTimeId}`)

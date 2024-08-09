@@ -3,7 +3,7 @@ import _ from "lodash"
 
 export const HandleTime = ({time}) => {
     var time1 = moment.from(time.visitTime, 'en').locale('fa').format();
-    return <span className="badge bg-warning m-2">{time1}</span>
+    return <span className="badge bg-warning m-2 p-2 h5">{time1}</span>
 }
 
 export const MapTime = ({times}) => {
